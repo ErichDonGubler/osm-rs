@@ -1,9 +1,3 @@
-extern crate osmpbfreader;
-extern crate roxmltree;
-#[macro_use]
-extern crate structopt;
-extern crate version_compare;
-
 pub use osmpbfreader::objects::{
     Node,
     NodeId,
@@ -40,7 +34,7 @@ use {
 struct OsmXml<T>(T);
 
 impl<T> Debug for OsmXml<T> where T: Debug {
-    fn fmt(&self, f: &mut Formatter) -> FmtResult {
+    fn fmt(&self, f: &mut Formatter<'_>) -> FmtResult {
         f.debug_tuple("OsmXml")
             .field(&self.0)
             .finish()
